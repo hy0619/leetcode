@@ -26,7 +26,7 @@ public class LengthOfLongestSubstr {
                        break;
                    }
                }
-               //char1[j-i] = chars[i+1];
+               char1[j-i] = chars[i+1];
                maxLen = j-i;
             }
 
