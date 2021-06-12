@@ -1,8 +1,5 @@
 package com.hy.algorithm;
 
-import java.util.HashMap;
-import java.util.Map;
-
 /**
  * @author Hero
  * @version 1.0.0
@@ -11,18 +8,31 @@ import java.util.Map;
  */
 public class LengthOfLongestSubstr {
 
-    public int lengthOfLongestSubstring(String s) {
+    public static void main(String[] args) {
+       String s = "abcabcabc";
+
+        System.out.println(lengthOfLongestSubstring(s));
+    }
+
+    public static int lengthOfLongestSubstring(String s) {
         char[] chars = s.toCharArray();
+        int maxLen = 1;
         for(int i = 0 ; i < chars.length ; i++){
-            char firstChar = chars[i];
-            char[] char1 = new char[chars.length - i ];
-            char1[0] = firstChar;
+            char[] char1 = new char[chars.length - i];
+            char1[0] = chars[i];
             for(int j = i+ 1 ; j<chars.length ;j++){
-                if(chars[j]!=char1[j-1]){  // 不再char1数组中
-                   char1[]
-                }
+               for(char c : char1){
+                   if(c == chars[j]){
+                       break;
+                   }
+               }
+               //char1[j-i] = chars[i+1];
+               maxLen = j-i;
             }
 
+
         }
+        return maxLen;
     }
+
 }
