@@ -15,57 +15,20 @@ package com.hy.algorithm;
 public class Square {
 
     public static void main(String[] args) {
-        System.out.println(getMinSquareNum(104 , 0));
+        System.out.println(numSquares(13 ));
     }
 
-
-
-    /**
-     * @description: TODO
-    if(result < 1 || result > 10000){
-    return null;
-    }
-     * @return: java.lang.Integer
-     * @author: Hero
-     * @date: 2021/6/11
-     */
-    public static Integer getMinSquareNum(Integer result , Integer count){
-        if(isPerfectSquare(result)) {
-            return count + 1 ;
-        }else{
-            Integer res = getCycles(result);
-            for(int i = 1 ; i <= res ; i++){
-                Integer j = getCycles(result -pow2(i));
-               return  getMinSquareNum(j , count + 1);
+    public static int numSquares(int n){
+        int[] f = new int[n + 1];
+        for(int i = 1 ; i<=n ; i++){ //1  2
+            int minn = Integer.MAX_VALUE;
+            for(int j = 1 ; j*j <= i  ; j++){ //  [1, 根号i]
+                minn= Math.min(minn , f[i - j*j]); // min(max, f[0])
             }
-            return null;
+            f[i] = minn +1 ; //f[1] = 1;  f[2] =
         }
-    }
+        return  f[n];
 
-
-    public final static boolean isPerfectSquare(Integer n) {
-        if (n < 0){
-            return false;
-        }
-
-        long tst = (long)(Math.sqrt(n) + 0.5);
-        return tst*tst == n;
-    }
-
-
-
-
-    private static Integer getCycles(int result){
-        double sqrt = Math.sqrt(result);
-        Double floor = Math.ceil(sqrt);
-        return floor.intValue();
-    }
-
-
-
-    private static Integer pow2(Integer num){
-        Double d =  Math.pow(num,2);
-        return d.intValue();
     }
 
 }
